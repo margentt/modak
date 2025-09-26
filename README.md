@@ -29,7 +29,7 @@ Concurrent requests are processed sequentially using a mutex associated with eac
 
 Memory usage is bounded by the number of active keys (i.e. notifications with defined rules) times the limit for each rule. The number of active keys is at most (number of users * number of rules). The cache automatically evicts inactive entries and their mutexes.
 
-I decided not to use alternatives such as the sliding window counter or leaky bucket. In the context of a per-user rate limiter with such low limits, buckets would often contain only one or a few events, resulting in a similar memory usage as storing individual timestamps, but with reduced accuracy for sudden bursts.
+I decided not to use alternatives such as the [sliding window counter](https://www.figma.com/blog/an-alternative-approach-to-rate-limiting/#sliding-window-counters) or leaky bucket. In the context of a per-user rate limiter with such low limits, buckets would often contain only one or a few events, resulting in a similar memory usage as storing individual timestamps, but with reduced accuracy for sudden bursts.
 
 ## Limitations and improvements
 
